@@ -21,9 +21,13 @@ contract Counter{
     require(amount > 0, "amount must be greater than zero");
 
     count -= amount;
+
+    emit Decrement(msg.sender, amount, count);
   }
 
   function reset public(){
     require(msg.sender == owner, "only the owner can reset");
     count = 0;
+
+    emit Reset(msg.sender);
   }
